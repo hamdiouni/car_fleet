@@ -1,0 +1,58 @@
+<div class="container mt-4">
+    <h2 *ngIf="employeeForm.get('id')?.value">Modifier l'employé</h2>
+    <h2 *ngIf="!employeeForm.get('id')?.value">Ajouter un employé</h2>
+    <form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="name" formControlName="name" required>
+            <div *ngIf="employeeForm.get('name')?.invalid && (employeeForm.get('name')?.touched || employeeForm.dirty)">
+                <small class="text-danger" *ngIf="employeeForm.get('name')?.errors?.['required']">Le nom est
+                    requis.</small>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="role" class="form-label">Rôle</label>
+            <input type="text" class="form-control" id="role" formControlName="role" required>
+            <div *ngIf="employeeForm.get('role')?.invalid && (employeeForm.get('role')?.touched || employeeForm.dirty)">
+                <small class="text-danger" *ngIf="employeeForm.get('role')?.errors?.['required']">Le rôle est
+                    requis.</small>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">numero de telephone</label>
+            <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" required>
+            <div
+                *ngIf="employeeForm.get('phoneNumber')?.invalid && (employeeForm.get('phoneNumber')?.touched || employeeForm.dirty)">
+                <small class="text-danger" *ngIf="employeeForm.get('phoneNumber')?.errors?.['required']">le numero est
+                    requis.</small>
+                <small class="text-danger" *ngIf="employeeForm.get('phoneNumber')?.errors?.['phoneNumber']">le numero
+                    doit être
+                    valide.</small>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" required>
+            <div
+                *ngIf="employeeForm.get('email')?.invalid && (employeeForm.get('email')?.touched || employeeForm.dirty)">
+                <small class="text-danger" *ngIf="employeeForm.get('email')?.errors?.['required']">L'email est
+                    requis.</small>
+                <small class="text-danger" *ngIf="employeeForm.get('email')?.errors?.['email']">L'email doit être
+                    valide.</small>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="identityCardNumber" class="form-label">Numéro de carte d'identité</label>
+            <input type="text" class="form-control" id="identityCardNumber" class="form-control"
+                formControlName="identityCardNumber" required>
+            <div
+                *ngIf="employeeForm.get('identityCardNumber')?.invalid && (employeeForm.get('identityCardNumber')?.touched || employeeForm.dirty)">
+                <small class="text-danger" *ngIf="employeeForm.get('identityCardNumber')?.errors?.['required']">Le
+                    numéro de
+                    carte d'identité est requis.</small>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Sauvegarder</button>
+    </form>
+</div>

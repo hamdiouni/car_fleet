@@ -1,0 +1,24 @@
+<div class="row">
+    <app-card class="col-md-3" [title]="'Total Maintenance Cost'" [value]="'DT ' + totalCost"></app-card>
+    <app-card class="col-md-3" [title]="'Car Maintenance Cost'" [value]="'DT ' + carCost"></app-card>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-12">
+        <input type="text" class="form-control" [(ngModel)]="licensePlate" placeholder="Enter License Plate">
+        <button class="btn btn-primary mt-2" (click)="searchByLicensePlate()">Search</button>
+    </div>
+</div>
+
+<!-- Notifications Section -->
+<div class="row mt-5">
+    <div class="col-md-12">
+        <h3>Notifications</h3>
+        <ul class="list-group">
+            <li *ngFor="let notification of notifications" class="list-group-item" [@flyInOut]>
+                {{ notification.message }}
+                <small class="text-muted">({{ notification.timestamp | date:'short' }})</small>
+            </li>
+        </ul>
+    </div>
+</div>

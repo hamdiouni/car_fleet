@@ -1,0 +1,34 @@
+<div class="container mt-4">
+    <h2>Liste des Maintenances</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Plaque d'immatriculation</th>
+                <th>Date Planifiée</th>
+                <th>Statut</th>
+                <th>Notes</th>
+                <th>Facture</th>
+                <th>Cout</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let maintenance of maintenances">
+                <td>{{ maintenance.licensePlate }}</td>
+                <td>{{ maintenance.scheduledDate }}</td>
+                <td>{{ maintenance.status }}</td>
+                <td>{{ maintenance.notes }}</td>
+                <td *ngIf="maintenance.invoiceFile">
+                    <button (click)="downloadFile(maintenance.id)">Télécharger la facture</button>
+                </td>
+                <td>{{ maintenance.cout }}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm" (click)="editMaintenance(maintenance.id)">Éditer</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteMaintenance(maintenance.id)">Supprimer</button>
+                    <button class="btn btn-info btn-sm" (click)="viewMaintenanceDetail(maintenance.id)">Détails</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" routerLink="/add-maintenance">Ajouter une Maintenance</button>
+</div>

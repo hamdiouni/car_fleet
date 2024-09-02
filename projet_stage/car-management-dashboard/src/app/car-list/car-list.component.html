@@ -1,0 +1,56 @@
+<div class="container">
+    <h2>Liste des voitures</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Modèle</th>
+                <th>Plaque d'immatriculation</th>
+                <th>Statut</th>
+                <th>Date de visite technique</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let car of cars">
+                <td>{{ car.id }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.licensePlate }}</td>
+                <td>{{ car.status }}</td>
+                <td>{{ car.technicalVisitDate | date }}</td>
+                <td>
+                    <a [routerLink]="['/edit-car', car.id]" class="btn btn-primary"
+                        (click)="confirmModify()">Modifier</a>
+                    <button (click)="openDeleteConfirmationModal(car.id)" class="btn btn-danger">Supprimer</button>
+                    <button *ngIf="car.leasingContract" (click)="downloadFile1(car.id)" class="btn btn-info">Télécharger
+                        Contrat de Leasing</button>
+                    <button *ngIf="car.insurance" (click)="downloadFile2(car.id )" class="btn btn-info">Télécharger
+                        Assurance</button>
+                    <button *ngIf="car.technicalVisit" (click)="downloadFile3(car.id )" class="btn btn-info">Télécharger
+                        Visite Technique</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" routerLink="/add-car">Ajouter une voiture</button>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationLabel">Confirmation de suppression</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer cette voiture ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-danger" (click)="confirmDelete()">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

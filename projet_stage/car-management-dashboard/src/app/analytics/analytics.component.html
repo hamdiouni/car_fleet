@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Visitors</h3>
+            </div>
+            <div class="card-body">
+                <canvas id="visitorsChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Global Sales by Top Locations</h3>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let data of globalSalesData">
+                        {{ data.country }}: {{ data.sales }} ({{ data.average }}%)
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

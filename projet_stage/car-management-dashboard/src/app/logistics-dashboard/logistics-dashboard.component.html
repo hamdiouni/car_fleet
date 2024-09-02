@@ -1,0 +1,16 @@
+<div class="container mt-4">
+    <h2>Logistique Dashboard</h2>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Problemes</h3>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let problem of problems">
+                    {{ problem.description }} - {{ problem.timestamp |date }} - {{problem.status}}
+                    <button class="btn btn-primary btn-sm float-right"
+                        (click)="reactToProblem(problem.employeeId)">Reagir</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

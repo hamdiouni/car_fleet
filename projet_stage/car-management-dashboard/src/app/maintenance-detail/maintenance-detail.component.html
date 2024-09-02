@@ -1,0 +1,14 @@
+<div class="container mt-4">
+    <h2>Détails de la Maintenance</h2>
+    <div *ngIf="maintenance">
+        <p><strong>Plaque d'immatriculation :</strong> {{ maintenance.licensePlate }}</p>
+        <p><strong>Date Planifiée :</strong> {{ maintenance.scheduledDate }}</p>
+        <p><strong>Statut :</strong> {{ maintenance.status }}</p>
+        <p><strong>Notes :</strong> {{ maintenance.notes }}</p>
+        <p><strong>Coût :</strong> {{ maintenance.cout }} DT</p>
+        <p><strong>Coût total pour {{ maintenance.licensePlate }} :</strong> {{ licensePlateCost }} DT</p>
+        <button class="btn btn-info btn-sm" *ngIf="maintenance.invoiceFile"
+            (click)="downloadFile(maintenance.id)">Télécharger la facture</button>
+    </div>
+    <button class="btn btn-primary mt-3" routerLink="/maintenances">Retour à la liste</button>
+</div>

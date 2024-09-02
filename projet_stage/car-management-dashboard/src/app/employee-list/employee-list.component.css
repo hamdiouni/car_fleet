@@ -1,0 +1,17 @@
+.container {
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}

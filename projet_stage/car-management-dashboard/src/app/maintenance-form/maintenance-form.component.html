@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <h2 *ngIf="!id">Créer une nouvelle Maintenance</h2>
+    <h2 *ngIf="id">Éditer Maintenance</h2>
+    <form (ngSubmit)="saveMaintenance()">
+        <div class="form-group">
+            <label for="scheduledDate">Date Planifiée:</label>
+            <input type="date" class="form-control" [(ngModel)]="maintenance.scheduledDate" name="scheduledDate"
+                required />
+        </div>
+        <div class="form-group">
+            <label for="status">Statut:</label>
+            <input type="text" class="form-control" [(ngModel)]="maintenance.status" name="status" required />
+        </div>
+        <div class="form-group">
+            <label for="notes">Notes:</label>
+            <input type="text" class="form-control" [(ngModel)]="maintenance.notes" name="notes" required />
+        </div>
+        <div class="form-group">
+            <label for="cout">Coût:</label>
+            <input type="number" class="form-control" [(ngModel)]="maintenance.cout" name="cout" required />
+        </div>
+        <div class="form-group">
+            <label for="licensePlate">Plaque d'immatriculation:</label>
+            <input type="text" class="form-control" [(ngModel)]="licensePlate" name="licensePlate" required />
+        </div>
+        <div class="form-group">
+            <label for="file">Facture (PDF):</label>
+            <input type="file" class="form-control" (change)="onFileChange($event)" accept="application/pdf" />
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <button type="button" class="btn btn-secondary" routerLink="/maintenances">Annuler</button>
+    </form>
+</div>

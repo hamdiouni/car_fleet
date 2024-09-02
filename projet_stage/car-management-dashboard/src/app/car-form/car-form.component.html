@@ -1,0 +1,63 @@
+<div class="container mt-4">
+    <h2 *ngIf="carForm.get('id')?.value">Modifier la voiture</h2>
+    <h2 *ngIf="!carForm.get('id')?.value">Ajouter une voiture</h2>
+    <form [formGroup]="carForm" (ngSubmit)="saveCar()">
+        <div class="mb-3">
+            <label for="model" class="form-label">Modèle</label>
+            <input type="text" class="form-control" id="model" formControlName="model" required>
+        </div>
+        <div class="mb-3">
+            <label for="licensePlate" class="form-label">Plaque d'immatriculation</label>
+            <input type="text" class="form-control" id="licensePlate" formControlName="licensePlate" required>
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Statut</label>
+            <input type="text" class="form-control" id="status" formControlName="status" required>
+        </div>
+        <div class="mb-3">
+            <label for="employeeIdentityCard" class="form-label">Numéro de carte d'identité de l'employé</label>
+            <input type="text" class="form-control" id="employeeIdentityCard" formControlName="employeeIdentityCard"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label for="leasingContract" class="form-label">Contrat de leasing</label>
+            <input type="file" class="form-control" (change)="onFileChange($event, 'leasingContract')"
+                accept="application/pdf">
+        </div>
+        <div class="mb-3">
+            <label for="insurance" class="form-label">Assurance</label>
+            <input type="file" class="form-control" (change)="onFileChange($event, 'insurance')"
+                accept="application/pdf">
+        </div>
+        <div class="mb-3">
+            <label for="technicalVisit" class="form-label">Visite technique</label>
+            <input type="file" class="form-control" (change)="onFileChange($event, 'technicalVisit')"
+                accept="application/pdf">
+        </div>
+        <div class="mb-3">
+            <label for="technicalVisitDate" class="form-label">Date de la visite technique</label>
+            <input type="date" class="form-control" id="technicalVisitDate" formControlName="technicalVisitDate"
+                required>
+        </div>
+        <button type="button" class="btn btn-primary" [disabled]="carForm.invalid" data-bs-toggle="modal"
+            data-bs-target="#ajoutCars">Enregistrer</button>
+        <div class="modal fade" id="ajoutCars" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajout Cars</h1>
+                    </div>
+                    <div class="modal-body">
+                        <p>Voulez vous Ajouter une voiture ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

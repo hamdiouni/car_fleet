@@ -1,0 +1,39 @@
+<div class="login-container">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" required class="form-control" />
+            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
+                <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</div>
+                <div *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="identityCardNumber">Identity Card Number</label>
+            <input type="text" id="identityCardNumber" formControlName="identityCardNumber" required
+                class="form-control" />
+            <div *ngIf="loginForm.get('identityCardNumber')?.invalid && loginForm.get('identityCardNumber')?.touched"
+                class="text-danger">
+                <div *ngIf="loginForm.get('identityCardNumber')?.errors?.['required']">Identity Card Number is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" formControlName="role" required class="form-control">
+                <option value="">Select Role</option>
+                <option value="ADMIN">ADMIN</option>
+                <option value="CAR_OWNER">Car Owner</option>
+                <option value="LOGISTICS">Logistics</option>
+            </select>
+            <div *ngIf="loginForm.get('role')?.invalid && loginForm.get('role')?.touched" class="text-danger">
+                <div *ngIf="loginForm.get('role')?.errors?.['required']">Role is required.</div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
